@@ -11,9 +11,9 @@ import DataGridDemo from "../components/table/TrashTable"
 import CheckLossonDemo from "../page/checkLesson/CheckLesson"
 import AddModuls from "../page/Module/AddModuls"
 import Evaluation from "../page/evaluation/Evaluation"
-import TeacherForm from "../page/AddTeacher/TeacherForm "
+import TeacherForm from "../page/AddTeacher/StudentForm "
 import Adminforms from "../page/AddAdmin/AddAdmin"
-import StudentForm from "../page/AddTeacher/TeacherForm "
+import StudentForm from "../page/AddTeacher/StudentForm "
 
   export const AuthRouter =() =>{
     return(

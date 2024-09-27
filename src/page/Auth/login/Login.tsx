@@ -15,7 +15,7 @@ export const Login = hoc(useLoginProps, ({ dispatch, navigate, isRememberMe }) =
     
     return (
         <section
-            className="flex min-h-full flex-col justify-center items-center px-6 py-12 lg:px-8 bg-no-repeat bg-gradient-to-b from-[#CF8E2F] to-[#603310]">
+            className="flex min-h-full flex-col justify-center items-center px-6 py-12 lg:px-8 bg-no-repeat bg-gradient-to-b from-[#2067D5] to-[#60DEFF]">
             <Card className="shadow-2xl mb-10 w-full max-w-md rounded-3xl backdrop-blur-xl border-y-green-50">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <h2 className="mt-4 mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-[#603310]">
@@ -50,13 +50,13 @@ export const Login = hoc(useLoginProps, ({ dispatch, navigate, isRememberMe }) =
                         {
                             name: "phoneNumber",
                             validations: [{ type: "required" }],
-                            value: "998974757890",
+                            // value: "998974757890",
                             onSubmitValue: (value) => value,
                         },
                         {
                             name: "password",
                             validations: [{ type: "required" }],
-                            value: "alice7890",
+                            // value: "alice7890",
                             onSubmitValue: (value) => value,
                         },
                     ]}
@@ -95,16 +95,16 @@ export const Login = hoc(useLoginProps, ({ dispatch, navigate, isRememberMe }) =
                                         htmlFor="remember-me"
                                         className="cursor-pointer text-[#603310] text-base"
                                     >
-                                        Запомнить меня
+                                        remember me
                                     </label>
                                 </Checkbox>
                                 <Button
                                     htmlType="submit"
                                     size="large"
                                     loading={isSubmitting}
-                                    className="w-full bg-[#AD7226] hover:bg-[#603310]"
+                                    className="w-full bg-[#20A7D5] hover:bg-[#20DEFF]"
                                 >
-                                    <span className="text-white">Отправлять</span>
+                                    <span className="text-black">Login</span>
                                 </Button>
                             </div>
                         );

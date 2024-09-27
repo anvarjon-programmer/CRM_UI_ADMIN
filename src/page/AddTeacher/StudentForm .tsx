@@ -3,32 +3,75 @@ import axios from 'axios';
 import { httpClient } from '../../utils/reques';
 
 const StudentForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    surname: '',
-    phoneNumber: '',
-    password: '',
-    birthday:'',
-    subject: '',
-    starterModule: ''
-  });
+  // const [formData, setFormData] = useState({
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+
+  //   name: '',
+  //   surname: '',
+  //   phoneNumber: '',
+  //   password: '',
+  //   birthday:'',
+  //   subject: '',
+  //   starterModule: ''
+  // });
+
+  // const handleChange = (e) => {
+
+
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value
+  //   });
+  // };
+
+  // const handleSubmit = async (e) => {
+
+
+  //   e.preventDefault();
+    
+  //   try {
+  //      await httpClient.post('/admin/add-student', formData);
+  //   } catch (error) {
+  //     console.error('Error adding student:', error);
+  //   }
+  // };
+
+  const [name,setName] = useState('');
+  const [surname,setSurname] = useState('');
+  const [phoneNumber,setPhoneNumber] = useState('');;
+  const [password,setPassword] = useState('');
+  const [birthday,setBirthday] = useState('');
+  const [subject,setSubject] = useState('');
+  const [starterModule,setStarterModule] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    const token = window.location.search;
+    
+    const newData = {
+      name,
+      surname,
+      phoneNumber,
+      password,
+      birthday,
+      subject,
+      starterModule
+    };
+  
     try {
-       await httpClient.post('/admin/add-student', formData);
+      await axios.post('http://164.90.187.178:8080/swagger-ui/index.html#/teacher-controller/createLesson', newData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log('Student added successfully!');
     } catch (error) {
       console.error('Error adding student:', error);
     }
   };
+  
+
 
   return (
     <div className="max-w-[800px] mx-auto bg-white shadow-md rounded-lg p-6 mt-12">
@@ -41,8 +84,8 @@ const StudentForm = () => {
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="text"
             name="name"
-            value={formData.name}
-            onChange={handleChange}
+            value={name}
+            onChange={e =>setName(e.target.value)}
             placeholder="Enter name"
           />
         </div>
@@ -52,8 +95,8 @@ const StudentForm = () => {
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="text"
             name="surname"
-            value={formData.surname}
-            onChange={handleChange}
+            value={surname}
+            onChange={e => setSurname(e.target.value)}
             placeholder="Enter surname"
           />
         </div>
@@ -63,8 +106,8 @@ const StudentForm = () => {
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="text"
             name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
+            value={phoneNumber}
+            onChange={e => setPhoneNumber(e.target.value)}
             placeholder="Enter phone number"
           />
         </div>
@@ -74,8 +117,8 @@ const StudentForm = () => {
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="password"
             name="password"
-            value={formData.password}
-            onChange={handleChange}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
             placeholder="Enter password"
           />
         </div>
@@ -90,8 +133,8 @@ const StudentForm = () => {
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="string"
             name="birthday"
-            value={formData.birthday}
-            onChange={handleChange}
+            value={birthday}
+            onChange={e => setBirthday(e.target.value)}
             placeholder="Enter burthday"
           />
         </div>
@@ -101,8 +144,8 @@ const StudentForm = () => {
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="text"
             name="subject"
-            value={formData.subject}
-            onChange={handleChange}
+            value={subject}
+            onChange={e => setSubject(e.target.value)}
             placeholder="Enter subject"
           />
         </div>
@@ -113,8 +156,8 @@ const StudentForm = () => {
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="number"
             name="starterModule"
-            value={formData.starterModule}
-            onChange={handleChange}
+            value={starterModule}
+            onChange={e => setStarterModule(e.target.value)}
             placeholder="Enter starterModule"
           />
         </div>
